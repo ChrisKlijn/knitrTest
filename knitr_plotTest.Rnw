@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{url}
+\usepackage[margin=0.6in]{geometry}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE,fig.show='hold',dev='pdf',fig.width=5,fig.height=5,fig.align='center'}
+
+\title{Analysis of Cancer Cell Line Variants}
+\author{Christiaan Klijn}
+\maketitle
+
+<<setup,echo=FALSE,results='hide',cache=FALSE,message=FALSE>>=
+options(replace.assign=TRUE,width=90)
+library(ggplot2)
+theme_new <- theme_set(theme_bw(10))
+theme_new <- theme_update(axis.title.x = theme_text(vjust = -.5))
+@
+
+Test the plotting of a legend
+
+<<testRect,fig.width=14,fig.height=7,out.width='.9\\linewidth'>>=
+plot(0,0, xlim=c(0, 1000), ylim=c(0, 100), type='n', axes=F, xlab='', ylab='')
+rect(1, 20, 1000, 30, border='black')
+labels <- c('Testing 1111111111','Testing 22222222','Testing 3333333')
+legend('bottom', legend=labels, fill=rainbow(n=3), ncol=3)
+@
+
+\end{document}
